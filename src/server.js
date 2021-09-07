@@ -3,6 +3,7 @@ import { db } from './db';
 import { routes } from './routes';
 import * as admin from 'firebase-admin';
 import credentials from './credentials.json';
+import { protectRoute } from './routes/protectRoute';
 
 admin.initializeApp({ credential: admin.credential.cert(credentials) });
 
@@ -11,7 +12,7 @@ app.use(express.static(__dirname + '/uploads/'));
 app.use(express.json());
 
 routes.forEach(route => {
-    app[route.method](route.path, route.handler);
+    app[route.method](route.path, protectRoute, route.handler);
 });
 
 const start = async () => {
