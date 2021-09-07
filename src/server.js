@@ -7,6 +7,7 @@ import credentials from './credentials.json';
 admin.initializeApp({ credential: admin.credential.cert(credentials) });
 
 const app = express();
+app.use(express.static(__dirname + '/uploads/'));
 app.use(express.json());
 
 routes.forEach(route => {
