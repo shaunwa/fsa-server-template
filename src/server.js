@@ -4,11 +4,13 @@ import { routes } from './routes';
 import * as admin from 'firebase-admin';
 import credentials from './credentials.json';
 import { protectRoute } from './routes/protectRoute';
+import fileUpload from 'express-fileupload';
 
 admin.initializeApp({ credential: admin.credential.cert(credentials) });
 
 const app = express();
 app.use(express.static(__dirname + '/uploads/'));
+app.use(fileUpload());
 app.use(express.json());
 
 routes.forEach(route => {
