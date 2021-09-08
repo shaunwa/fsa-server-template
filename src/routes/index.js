@@ -1,5 +1,7 @@
-import { testRoute } from './testRoute';
+import { getMyPhotosRoute } from './getMyPhotosRoute';
+import { getSharedWithMePhotosRoute } from './getSharedWithMePhotosRoute';
 
 export const routes = [
-	testRoute,
+    getMyPhotosRoute,
+    getSharedWithMePhotosRoute,
 ];
